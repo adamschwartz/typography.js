@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>SmartUnderline</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="images/favicon.ico">
+
+  <link href="test.css" rel="stylesheet">
+</head>
+<body>
+  <h1><a href>SmartUnderline Tests</a></h1>
+  <div class="controls">
+    <a href="#/" data-suite>Run Full Test Suite</a>
+    <ul>
+      <li><a href="#/Arial" data-all data-font="Arial">Arial</a> <a href="#/Arial/small" data-small data-font="Arial">small</a> <a href="#/Arial/large" data-large data-font="Arial">large</a></li>
+      <li><a href="#/Futura" data-all data-font="Futura">Futura</a> <a href="#/Futura/small" data-small data-font="Futura">small</a> <a href="#/Futura/large" data-large data-font="Futura">large</a></li>
+      <li><a href="#/Georgia" data-all data-font="Georgia">Georgia</a> <a href="#/Georgia/small" data-small data-font="Georgia">small</a> <a href="#/Georgia/large" data-large data-font="Georgia">large</a></li>
+      <li><a href="#/Gill Sans" data-all data-font="Gill Sans">Gill Sans</a> <a href="#/Gill Sans/small" data-small data-font="Gill Sans">small</a> <a href="#/Gill Sans/large" data-large data-font="Gill Sans">large</a></li>
+      <li><a href="#/Helvetica" data-all data-font="Helvetica">Helvetica</a> <a href="#/Helvetica/small" data-small data-font="Helvetica">small</a> <a href="#/Helvetica/large" data-large data-font="Helvetica">large</a></li>
+      <li><a href="#/Helvetica Neue" data-all data-font="Helvetica Neue">Helvetica Neue</a> <a href="#/Helvetica Neue/small" data-small data-font="Helvetica Neue">small</a> <a href="#/Helvetica Neue/large" data-large data-font="Helvetica Neue">large</a></li>
+      <li><a href="#/monospace" data-all data-font="monospace">monospace</a> <a href="#/monospace/small" data-small data-font="monospace">small</a> <a href="#/monospace/large" data-large data-font="monospace">large</a></li>
+      <li><a href="#/sans-serif" data-all data-font="sans-serif">sans-serif</a> <a href="#/sans-serif/small" data-small data-font="sans-serif">small</a> <a href="#/sans-serif/large" data-large data-font="sans-serif">large</a></li>
+      <li><a href="#/serif" data-all data-font="serif">serif</a> <a href="#/serif/small" data-small data-font="serif">small</a> <a href="#/serif/large" data-large data-font="serif">large</a></li>
+      <li><a href="#/Times" data-all data-font="Times">Times</a> <a href="#/Times/small" data-small data-font="Times">small</a> <a href="#/Times/large" data-large data-font="Times">large</a></li>
+      <li><a href="#/Times New Roman" data-all data-font="Times New Roman">Times New Roman</a> <a href="#/Times New Roman/small" data-small data-font="Times New Roman">small</a> <a href="#/Times New Roman/large" data-large data-font="Times New Roman">large</a></li>
+    </ul>
+  </div>
+  <div class="results-wrapper">
+    <div id="results"></div>
+  </div>
+  <script src="typography.js"></script>
+  <script src="test.js"></script>
+  <script>
+    testSuite();
+
+    Array.prototype.forEach.call(document.querySelectorAll('[data-suite]'), function(link) {
+      link.addEventListener('click', function(){
+        results.innerHTML = '';
+
+        testSuite();
+      });
+    });
+
+    Array.prototype.forEach.call(document.querySelectorAll('[data-font]'), function(link) {
+      link.addEventListener('click', function(){
+        link.getAttribute('data-font');
+
+        results.innerHTML = '';
+
+        if (link.hasAttribute('data-all')) {
+          test(link.getAttribute('data-font'), '72px', 'normal');
+          testFontsInSizeRange(link.getAttribute('data-font'), 8, 36);
+        }
+
+        if (link.hasAttribute('data-large')) {
+          testFontsInSizeRange(link.getAttribute('data-font'), 36, 48);
+        }
+
+        if (link.hasAttribute('data-small')) {
+          testFontsInSizeRange(link.getAttribute('data-font'), 5, 15);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
