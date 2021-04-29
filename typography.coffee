@@ -5,8 +5,9 @@ calculateBoundary = (text, canvas, context) ->
   clearCanvas canvas, context
 
   context.fillStyle = 'red'
-  textWidth = context.measureText(text).width
-  context.fillText text, 0, 0
+  metrics = context.measureText text
+  textWidth = metrics.width
+  context.fillText text, 0, metrics.fontBoundingBoxAscent || 0
 
   lowestY = undefined
   highestY = undefined

@@ -40,7 +40,8 @@ window.test = (fontFamily, fontSize, fontWeight, drawSmartUnderlines) ->
     descenderHght  #{ descenderHeight }
   """
 
-  textWidth = _.context.measureText(testString).width
+  metrics = _.context.measureText testString
+  textWidth = metrics.width
   _.canvas.width = textWidth
 
   Typography.normalizeContext _.context
@@ -65,7 +66,7 @@ window.test = (fontFamily, fontSize, fontWeight, drawSmartUnderlines) ->
   _.context.fillRect 0, baselineY + descenderHeight, _.canvas.width, 1
 
   _.context.fillStyle = 'red'
-  _.context.fillText testString, 0, 0
+  _.context.fillText testString, 0, metrics.fontBoundingBoxAscent || 0
 
   testDiv.appendChild canvasWrapOuterDiv
   testDiv.appendChild testTitle
