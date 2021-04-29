@@ -42,7 +42,7 @@ window.Typography =
     # TODO support other font styles
     # We’d love to use `computedStyle.font` here,
     # but Firefox has issues... (TODO: file bug report)
-    context.font = "#{ fontWeight } #{ fontSize }/normal '#{ fontFamily }'"
+    context.font = "#{ fontWeight } #{ fontSize }/normal #{ fontFamily }"
 
     { lowestY, highestY } = calculateBoundary 'I', canvas, context
     baselineY = highestY

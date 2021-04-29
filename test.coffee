@@ -2,7 +2,7 @@ window.test = (fontFamily, fontSize, fontWeight, drawSmartUnderlines) ->
   { baselineY, xHeight, capHeight, ascenderHeight, descenderHeight, _ } = Typography.evaluate fontFamily, fontSize, fontWeight
 
   testId = "#{ fontFamily } #{ fontSize } #{ fontWeight }"
-  testString = "#{ fontFamily } Ixgh"
+  testString = "#{ fontFamily.replace(/\"/g, "") } Ixgh"
 
   fontSizeInt = parseInt(fontSize, 10)
   lineHeightInt = fontSizeInt * 1.4 # TODO - wtf?
@@ -45,7 +45,7 @@ window.test = (fontFamily, fontSize, fontWeight, drawSmartUnderlines) ->
   _.canvas.width = textWidth
 
   Typography.normalizeContext _.context
-  _.context.font = "#{ fontWeight } #{ fontSize }/normal '#{ fontFamily }'"
+  _.context.font = "#{ fontWeight } #{ fontSize }/normal #{ fontFamily }"
 
   _.context.fillStyle = '#a0a0a0'
   _.context.fillRect 0, 0, _.canvas.width, 1
@@ -144,14 +144,14 @@ window.testSuite = ->
     'Arial'
     'Futura'
     'Georgia'
-    'Gill Sans'
+    '"Gill Sans"'
     'Helvetica'
-    'Helvetica Neue'
+    '"Helvetica Neue"'
     'monospace'
     'sans-serif'
     'serif'
     'Times'
-    'Times New Roman'
+    '"Times New Roman"'
   ]
 
   sizes = [
