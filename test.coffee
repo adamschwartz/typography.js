@@ -56,7 +56,7 @@ window.test = (fontFamily, fontSize, fontWeight, drawSmartUnderlines) ->
   _.context.fillStyle = 'orange'
   _.context.fillRect 0, baselineY - xHeight, _.canvas.width, 1
 
-  _.context.fillStyle = 'yellow'
+  _.context.fillStyle = 'purple'
   _.context.fillRect 0, baselineY - capHeight, _.canvas.width, 1
 
   _.context.fillStyle = 'green'
