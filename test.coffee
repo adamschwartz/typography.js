@@ -83,33 +83,6 @@ window.test = (fontFamily, fontSize, fontWeight, drawSmartUnderlines) ->
 
   results.appendChild testDiv
 
-  # if drawSmartUnderlines
-  #   testDiv.classList.add 'with-smart-underline'
-
-  #   textHeight = domTextDiv.clientHeight - 1
-  #   descenderY = baselineY + descenderHeight
-
-  #   smartUnderlinePosition = Math.max(((descenderY - baselineY) / 2) + 1, 3) + baselineY
-
-  #   if descenderHeight is 3
-  #     smartUnderlinePosition = baselineY + descenderHeight
-
-  #   smartUnderlinePositionPercent = Math.round(100 * smartUnderlinePosition / textHeight)
-
-  #   if descenderHeight > 2 and fontSizeInt > 10 and smartUnderlinePositionPercent <= 100
-  #     domTextDiv.style.textShadow = '0.03em 0 #fff, -0.03em 0 #fff, 0 0.03em #fff, 0 -0.03em #fff, 0.06em 0 #fff, -0.06em 0 #fff, 0.09em 0 #fff, -0.09em 0 #fff, 0.12em 0 #fff, -0.12em 0 #fff, 0.15em 0 #fff, -0.15em 0 #fff'
-  #     domTextDiv.style.backgroundImage = '-webkit-linear-gradient(#fff, #fff), -webkit-linear-gradient(#fff, #fff), -webkit-linear-gradient(#000, #000)'
-  #     domTextDiv.style.backgroundSize = '0.05em 1px, 0.05em 1px, 1px 1px'
-  #     domTextDiv.style.backgroundRepeat = 'no-repeat, no-repeat, repeat-x'
-  #     domTextDiv.style.backgroundPosition = "0% #{ smartUnderlinePositionPercent }%, 100% #{ smartUnderlinePositionPercent }%, 0% #{ smartUnderlinePositionPercent }%"
-
-  #     smartUnderlineResult = document.createElement 'p'
-  #     smartUnderlineResult.innerHTML = "underlinePosY  #{ smartUnderlinePositionPercent }%"
-  #     testDiv.appendChild smartUnderlineResult
-
-  #   else
-  #     domTextDiv.style.textDecoration = 'underline'
-
   if drawSmartUnderlines
     testDiv.classList.add 'with-smart-underline'
 
